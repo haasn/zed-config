@@ -7,8 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "auto_signature_help": true,
   "base_keymap": "VSCode",
-  // "buffer_font_family": "xos4 Terminus",
+  "buffer_font_family": "Monaspace Neon",
   "cursor_blink": false,
   "buffer_line_height": "standard",
   "telemetry": {
@@ -49,5 +50,6 @@
     }
   },
   "vertical_scroll_margin": 10,
+  "when_closing_with_no_tabs": "close_window",
   "wrap_guides": [80]
 }

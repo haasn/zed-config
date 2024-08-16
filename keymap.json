@@ -8,6 +8,7 @@
 [
   {
     "bindings": {
+      ";": "command_palette::Toggle",
       "f6": "terminal_panel::ToggleFocus",
       "ctrl-q": "pane::CloseActiveItem",
       "ctrl-shift-q": "workspace::CloseWindow"
@@ -31,14 +32,14 @@
   {
     "context": "VimControl && !VimWaiting && !menu",
     "bindings": {
-      ";": "command_palette::Toggle",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePrevItem",
       "alt-,": ["workspace::ActivatePaneInDirection", "Left"],
       "alt-a": ["workspace::ActivatePaneInDirection", "Down"],
       "alt-e": ["workspace::ActivatePaneInDirection", "Up"],
       "alt-i": ["workspace::ActivatePaneInDirection", "Right"],
-      "tab": "pane::ActivateNextItem",
-      "shift-tab": "pane::ActivatePrevItem",
       "t": "vim::NextWordEnd",
+      "?": "editor::ShowSignatureHelp",
       // Selection
       "m": "editor::SelectLargerSyntaxNode",
       "shift-m": "editor::SelectSmallerSyntaxNode",
