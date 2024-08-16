@@ -8,9 +8,11 @@
 // command palette
 {
   "base_keymap": "VSCode",
+  // "buffer_font_family": "xos4 Terminus",
   "cursor_blink": false,
+  "buffer_line_height": "standard",
   "telemetry": {
-    "metrics": false
+    "metrics": true
   },
   "vim_mode": true,
   "ui_font_size": 17,
@@ -35,10 +37,17 @@
   "inlay_hints": {
     "enabled": false
   },
+  "tabs": {
+    "close_position": "right",
+    "file_icons": true,
+    "git_status": true
+  },
   "terminal": {
+    "copy_on_select": true,
     "env": {
       "EDITOR": "zed --wait"
     }
   },
-  "vertical_scroll_margin": 10
+  "vertical_scroll_margin": 10,
+  "wrap_guides": [80]
 }

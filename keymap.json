@@ -8,13 +8,15 @@
 [
   {
     "bindings": {
-      "ctrl-q": "workspace::CloseWindow"
+      "f6": "terminal_panel::ToggleFocus",
+      "ctrl-q": "pane::CloseActiveItem",
+      "ctrl-shift-q": "workspace::CloseWindow"
     }
   },
   {
-    "context": "Workspace",
+    "context": "Editor && mode == full && inline_completion",
     "bindings": {
-      "f6": "terminal_panel::ToggleFocus"
+      "shift-tab": "editor::AcceptPartialInlineCompletion"
     }
   },
   {
@@ -63,7 +65,6 @@
       "ctrl-e": "editor::MoveLineUp",
       "ctrl-a": "editor::MoveLineDown",
       "shift-u": "editor::Redo",
-      "d": "vim::DeleteRight",
       "ctrl-c": "editor::ToggleComments"
     }
   },
@@ -73,6 +74,9 @@
       // put key-bindings here if you want them to work only in normal mode
       "l": "vim::ToggleVisualLine",
       "L": "vim::ToggleVisualLine",
+      "d": "vim::DeleteRight",
+      ">": "vim::Indent",
+      "<": "vim::Outdent",
       // Movement
       ",": "vim::Left",
       "a": "vim::Down",
