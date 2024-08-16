@@ -27,14 +27,9 @@
     }
   },
   {
-    "context": "VimControl && !menu",
+    "context": "VimControl && !VimWaiting && !menu",
     "bindings": {
       ";": "command_palette::Toggle",
-      // Movement
-      ",": "vim::Left",
-      "a": "vim::Down",
-      "e": "vim::Up",
-      "i": "vim::Right",
       "alt-,": ["workspace::ActivatePaneInDirection", "Left"],
       "alt-a": ["workspace::ActivatePaneInDirection", "Down"],
       "alt-e": ["workspace::ActivatePaneInDirection", "Up"],
@@ -77,17 +72,27 @@
     "bindings": {
       // put key-bindings here if you want them to work only in normal mode
       "l": "vim::ToggleVisualLine",
-      "L": "vim::ToggleVisualLine"
+      "L": "vim::ToggleVisualLine",
+      // Movement
+      ",": "vim::Left",
+      "a": "vim::Down",
+      "e": "vim::Up",
+      "i": "vim::Right"
     }
   },
   {
     "context": "Editor && VimControl && vim_mode == visual && !VimWaiting && !menu",
     "bindings": {
       // visual, visual line & visual block modes
-      "l": ["workspace::SendKeystrokes", "a"],
-      "L": ["workspace::SendKeystrokes", "a"],
+      "l": "vim::Down",
+      "L": "vim::Down",
       "v": "editor::SelectLargerSyntaxNode",
-      "V": "editor::SelectSmallerSyntaxNode"
+      "V": "editor::SelectSmallerSyntaxNode",
+      // Movement
+      ",": "vim::Left",
+      "a": "vim::Down",
+      "e": "vim::Up",
+      "i": "vim::Right"
     }
   }
 ]
