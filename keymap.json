@@ -1,0 +1,93 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "ctrl-q": "workspace::CloseWindow"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "f6": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-n": "editor::ContextMenuNext",
+      "ctrl-p": "editor::ContextMenuPrev"
+      // "tab": "editor::ContextMenuNext",
+      // "shift-tab": "editor::ContextMenuPrev"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      ";": "command_palette::Toggle",
+      // Movement
+      ",": "vim::Left",
+      "a": "vim::Down",
+      "e": "vim::Up",
+      "i": "vim::Right",
+      "alt-,": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-a": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-e": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-i": ["workspace::ActivatePaneInDirection", "Right"],
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePrevItem",
+      "t": "vim::NextWordEnd",
+      // Selection
+      "m": "editor::SelectLargerSyntaxNode",
+      "shift-m": "editor::SelectSmallerSyntaxNode",
+      // Modification
+      "s": "vim::InsertBefore",
+      "h": "vim::InsertAfter",
+      "shift-s": "vim::InsertFirstNonWhitespace",
+      "shift-h": "vim::InsertEndOfLine",
+      // Multiple cursors
+      "x": "editor::AddSelectionBelow",
+      "X": "editor::AddSelectionAbove",
+      // Goto shortcuts
+      "g i": "editor::GoToImplementation",
+      // Space bindings
+      "space f": "file_finder::Toggle",
+      "space s": "outline::Toggle",
+      "space shift-s": "project_symbols::Toggle",
+      "space d": "editor::GoToDiagnostic",
+      "space shift-d": "diagnostics::Deploy",
+      "space a": "editor::ToggleCodeActions",
+      "space m": "editor::SelectAllMatches",
+      "space c": "editor::ToggleComments",
+      // Misc
+      "ctrl-e": "editor::MoveLineUp",
+      "ctrl-a": "editor::MoveLineDown",
+      "shift-u": "editor::Redo",
+      "d": "vim::DeleteRight",
+      "ctrl-c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Editor && VimControl && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      "l": "vim::ToggleVisualLine",
+      "L": "vim::ToggleVisualLine"
+    }
+  },
+  {
+    "context": "Editor && VimControl && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      "l": ["workspace::SendKeystrokes", "a"],
+      "L": ["workspace::SendKeystrokes", "a"],
+      "v": "editor::SelectLargerSyntaxNode",
+      "V": "editor::SelectSmallerSyntaxNode"
+    }
+  }
+]
