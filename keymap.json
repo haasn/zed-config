@@ -8,10 +8,14 @@
 [
   {
     "bindings": {
-      ";": "command_palette::Toggle",
       "f6": "terminal_panel::ToggleFocus",
+      "f12": "assistant::ToggleFocus",
       "ctrl-q": "pane::CloseActiveItem",
-      "ctrl-shift-q": "workspace::CloseWindow"
+      "ctrl-shift-q": "workspace::CloseWindow",
+      "alt-g": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-s": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-t": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-r": ["workspace::ActivatePaneInDirection", "Right"]
     }
   },
   {
@@ -30,43 +34,73 @@
     }
   },
   {
+    "context": "EmptyPane || SharedScreen || VimControl && !menu",
+    "bindings": {
+      ";": "command_palette::Toggle",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePrevItem"
+    }
+  },
+  {
     "context": "VimControl && !VimWaiting && !menu",
     "bindings": {
-      "tab": "pane::ActivateNextItem",
-      "shift-tab": "pane::ActivatePrevItem",
-      "alt-,": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-a": ["workspace::ActivatePaneInDirection", "Down"],
-      "alt-e": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-i": ["workspace::ActivatePaneInDirection", "Right"],
-      "t": "vim::NextWordEnd",
       "?": "editor::ShowSignatureHelp",
       // Selection
       "m": "editor::SelectLargerSyntaxNode",
       "shift-m": "editor::SelectSmallerSyntaxNode",
+      "@": "editor::SelectAllMatches",
       // Modification
-      "s": "vim::InsertBefore",
-      "h": "vim::InsertAfter",
-      "shift-s": "vim::InsertFirstNonWhitespace",
-      "shift-h": "vim::InsertEndOfLine",
+      "h": ["vim::PushOperator", "Replace"],
       // Multiple cursors
-      "x": "editor::AddSelectionBelow",
-      "X": "editor::AddSelectionAbove",
+      "b": "editor::AddSelectionBelow",
+      "B": "editor::AddSelectionAbove",
       // Goto shortcuts
-      "g i": "editor::GoToImplementation",
+      "k i": "editor::GoToImplementation",
+      "k k": "vim::StartOfDocument",
+      "k e": "vim::EndOfDocument",
+      "k h": "editor::Hover",
+      "k t": "pane::ActivateNextItem",
+      "k shift-t": "pane::ActivatePrevItem",
+      "k d": "editor::GoToDefinition",
+      "k shift-d": "editor::GoToDeclaration",
+      "k y": "editor::GoToTypeDefinition",
+      "k shift-i": "editor::GoToImplementation",
+      "k x": "editor::OpenUrl",
+      "k n": "vim::SelectNextMatch",
+      "k shift-n": "vim::SelectPreviousMatch",
+      "k l": "vim::SelectNext",
+      "k shift-l": "vim::SelectPrevious",
+      "k >": ["editor::SelectNext", { "replace_newest": true }],
+      "k <": ["editor::SelectPrevious", { "replace_newest": true }],
+      "k a": "editor::SelectAllMatches",
+      "k s": "outline::Toggle",
+      "k shift-s": "project_symbols::Toggle",
+      "k .": "editor::ToggleCodeActions", // zed specific
+      "k shift-a": "editor::FindAllReferences", // zed specific
+      "k space": "editor::OpenExcerpts", // zed specific
+      "k *": ["vim::MoveToNext", { "partialWord": true }],
+      "k #": ["vim::MoveToPrev", { "partialWord": true }],
+      "k v": "vim::RestoreVisualSelection",
+      "k ]": "editor::GoToDiagnostic",
+      "k [": "editor::GoToPrevDiagnostic",
+      "k p": "vim::InsertAtPrevious",
+      "k ,": "vim::ChangeListNewer",
+      "k ;": "vim::ChangeListOlder",
+      "k /": "pane::DeploySearch",
       // Space bindings
       "space f": "file_finder::Toggle",
-      "space s": "outline::Toggle",
-      "space shift-s": "project_symbols::Toggle",
       "space d": "editor::GoToDiagnostic",
       "space shift-d": "diagnostics::Deploy",
       "space a": "editor::ToggleCodeActions",
-      "space m": "editor::SelectAllMatches",
       "space c": "editor::ToggleComments",
       // Misc
-      "ctrl-e": "editor::MoveLineUp",
-      "ctrl-a": "editor::MoveLineDown",
+      "ctrl-g": "editor::MoveLineUp",
+      "ctrl-v": "editor::MoveLineDown",
       "shift-u": "editor::Redo",
-      "ctrl-c": "editor::ToggleComments"
+      "ctrl-c": "editor::ToggleComments",
+      "K": "vim::EndOfDocument",
+      "]": "editor::GoToDiagnostic",
+      "[": "editor::GoToPrevDiagnostic"
     }
   },
   {
@@ -75,14 +109,13 @@
       // put key-bindings here if you want them to work only in normal mode
       "l": "vim::ToggleVisualLine",
       "L": "vim::ToggleVisualLine",
-      "d": "vim::DeleteRight",
       ">": "vim::Indent",
       "<": "vim::Outdent",
       // Movement
-      ",": "vim::Left",
-      "a": "vim::Down",
-      "e": "vim::Up",
-      "i": "vim::Right"
+      "g": "vim::Left",
+      "s": "vim::Down",
+      "t": "vim::Up",
+      "r": "vim::Right"
     }
   },
   {
@@ -94,10 +127,10 @@
       "v": "editor::SelectLargerSyntaxNode",
       "V": "editor::SelectSmallerSyntaxNode",
       // Movement
-      ",": "vim::Left",
-      "a": "vim::Down",
-      "e": "vim::Up",
-      "i": "vim::Right"
+      "g": "vim::Left",
+      "s": "vim::Down",
+      "t": "vim::Up",
+      "r": "vim::Right"
     }
   }
 ]
