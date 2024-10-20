@@ -12,10 +12,17 @@
       "f12": "assistant::ToggleFocus",
       "ctrl-q": "pane::CloseActiveItem",
       "ctrl-shift-q": "workspace::CloseWindow",
-      "alt-g": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-s": ["workspace::ActivatePaneInDirection", "Down"],
-      "alt-t": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-r": ["workspace::ActivatePaneInDirection", "Right"]
+      "alt-k": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-t": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-h": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-s": ["workspace::ActivatePaneInDirection", "Right"]
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "ctrl-shift-s": "workspace::SaveAll"
     }
   },
   {
@@ -42,6 +49,12 @@
     }
   },
   {
+    "context": "Editor",
+    "bindings": {
+      "pageup": "editor::MovePageUp",
+    }
+  },
+  {
     "context": "VimControl && !VimWaiting && !menu",
     "bindings": {
       "?": "editor::ShowSignatureHelp",
@@ -49,44 +62,9 @@
       "m": "editor::SelectLargerSyntaxNode",
       "shift-m": "editor::SelectSmallerSyntaxNode",
       "@": "editor::SelectAllMatches",
-      // Modification
-      "h": ["vim::PushOperator", "Replace"],
       // Multiple cursors
       "b": "editor::AddSelectionBelow",
       "B": "editor::AddSelectionAbove",
-      // Goto shortcuts
-      "k i": "editor::GoToImplementation",
-      "k k": "vim::StartOfDocument",
-      "k e": "vim::EndOfDocument",
-      "k h": "editor::Hover",
-      "k t": "pane::ActivateNextItem",
-      "k shift-t": "pane::ActivatePrevItem",
-      "k d": "editor::GoToDefinition",
-      "k shift-d": "editor::GoToDeclaration",
-      "k y": "editor::GoToTypeDefinition",
-      "k shift-i": "editor::GoToImplementation",
-      "k x": "editor::OpenUrl",
-      "k n": "vim::SelectNextMatch",
-      "k shift-n": "vim::SelectPreviousMatch",
-      "k l": "vim::SelectNext",
-      "k shift-l": "vim::SelectPrevious",
-      "k >": ["editor::SelectNext", { "replace_newest": true }],
-      "k <": ["editor::SelectPrevious", { "replace_newest": true }],
-      "k a": "editor::SelectAllMatches",
-      "k s": "outline::Toggle",
-      "k shift-s": "project_symbols::Toggle",
-      "k .": "editor::ToggleCodeActions", // zed specific
-      "k shift-a": "editor::FindAllReferences", // zed specific
-      "k space": "editor::OpenExcerpts", // zed specific
-      "k *": ["vim::MoveToNext", { "partialWord": true }],
-      "k #": ["vim::MoveToPrev", { "partialWord": true }],
-      "k v": "vim::RestoreVisualSelection",
-      "k ]": "editor::GoToDiagnostic",
-      "k [": "editor::GoToPrevDiagnostic",
-      "k p": "vim::InsertAtPrevious",
-      "k ,": "vim::ChangeListNewer",
-      "k ;": "vim::ChangeListOlder",
-      "k /": "pane::DeploySearch",
       // Space bindings
       "space f": "file_finder::Toggle",
       "space d": "editor::GoToDiagnostic",
@@ -94,8 +72,8 @@
       "space a": "editor::ToggleCodeActions",
       "space c": "editor::ToggleComments",
       // Misc
-      "ctrl-g": "editor::MoveLineUp",
-      "ctrl-v": "editor::MoveLineDown",
+      "ctrl-h": "editor::MoveLineUp",
+      "ctrl-t": "editor::MoveLineDown",
       "shift-u": "editor::Redo",
       "ctrl-c": "editor::ToggleComments",
       "K": "vim::EndOfDocument",
@@ -112,10 +90,10 @@
       ">": "vim::Indent",
       "<": "vim::Outdent",
       // Movement
-      "g": "vim::Left",
-      "s": "vim::Down",
-      "t": "vim::Up",
-      "r": "vim::Right"
+      "k": "vim::Left",
+      "t": "vim::Down",
+      "h": "vim::Up",
+      "s": "vim::Right"
     }
   },
   {
@@ -127,10 +105,19 @@
       "v": "editor::SelectLargerSyntaxNode",
       "V": "editor::SelectSmallerSyntaxNode",
       // Movement
-      "g": "vim::Left",
-      "s": "vim::Down",
-      "t": "vim::Up",
-      "r": "vim::Right"
+      "k": "vim::Left",
+      "t": "vim::Down",
+      "h": "vim::Up",
+      "s": "vim::Right",
+      // Case manipulation
+      "`": "vim::ConvertToLowerCase",
+      "~": "vim::ConvertToUpperCase"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "alt-space": "editor::ShowInlineCompletion"
     }
   }
 ]

@@ -20,6 +20,9 @@
   "ui_font_size": 18,
   "buffer_font_size": 14,
   "format_on_save": "off",
+  // "features": {
+  //   "inline_completion_provider": "supermaven"
+  // },
   "theme": {
     "mode": "dark",
     "light": "One Light",
